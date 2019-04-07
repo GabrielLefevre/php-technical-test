@@ -17,11 +17,19 @@
             </tr>
             <tr>
                 <th>Duration</th>
-                <td>{{ running.duration }}</td>
+                <td>{{ running.duration ? running.duration|date('H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Distance</th>
                 <td>{{ running.distance }}</td>
+            </tr>
+            <tr>
+                <th>Speed</th>
+                <td>{{ running.speed }}</td>
+            </tr>
+            <tr>
+                <th>Pace</th>
+                <td>{{ running.pace }}</td>
             </tr>
             <tr>
                 <th>Comment</th>

@@ -34,7 +34,7 @@ class Running
     private $start;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="time")
      */
     private $duration;
 
@@ -42,6 +42,16 @@ class Running
      * @ORM\Column(type="float")
      */
     private $distance;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $speed;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $pace;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -89,12 +99,12 @@ class Running
         return $this;
     }
 
-    public function getDuration(): ?float
+    public function getDuration()
     {
         return $this->duration;
     }
 
-    public function setDuration(float $duration): self
+    public function setDuration($duration): self
     {
         $this->duration = $duration;
 
@@ -109,6 +119,30 @@ class Running
     public function setDistance(float $distance): self
     {
         $this->distance = $distance;
+
+        return $this;
+    }
+
+    public function getSpeed(): ?float
+    {
+        return $this->speed;
+    }
+
+    public function setSpeed(float $speed): self
+    {
+        $this->speed = $speed;
+
+        return $this;
+    }
+
+    public function getPace(): ?float
+    {
+        return $this->pace;
+    }
+
+    public function setPace(float $pace): self
+    {
+        $this->pace = $pace;
 
         return $this;
     }

@@ -12,6 +12,8 @@
                 <th>Start</th>
                 <th>Duration</th>
                 <th>Distance</th>
+                <th>Speed</th>
+                <th>Pace</th>
                 <th>Comment</th>
                 <th>actions</th>
             </tr>
@@ -21,8 +23,10 @@
             <tr>
                 <td>{{ running.id }}</td>
                 <td>{{ running.start ? running.start|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ running.duration }}</td>
+                <td>{{ running.duration ? running.duration|date('H:i:s') : '' }}</td>
                 <td>{{ running.distance }}</td>
+                <td>{{ running.speed }}</td>
+                <td>{{ running.pace }}</td>
                 <td>{{ running.comment }}</td>
                 <td>
                     <a href="{{ path('running_show', {'id': running.id}) }}">show</a>

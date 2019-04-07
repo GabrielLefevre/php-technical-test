@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Running;
 use App\Form\RunningType;
 use App\Repository\RunningRepository;
+use App\Service\CalculAverage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +29,7 @@ class RunningController extends AbstractController
     /**
      * @Route("/new", name="running_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, CalculAverage $calculAverage): Response
     {
         $running = new Running();
         $form = $this->createForm(RunningType::class, $running);
@@ -37,6 +38,9 @@ class RunningController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $running->setUser($this->getUser());
+
+            $calculAverage->calculAverage($running);
+
             $entityManager->persist($running);
             $entityManager->flush();
 
@@ -62,12 +66,13 @@ class RunningController extends AbstractController
     /**
      * @Route("/{id}/edit", name="running_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Running $running): Response
+    public function edit(Request $request, Running $running, CalculAverage $calculAverage): Response
     {
         $form = $this->createForm(RunningType::class, $running);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $calculAverage->calculAverage($running);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('running_index', [
@@ -94,4 +99,5 @@ class RunningController extends AbstractController
 
         return $this->redirectToRoute('running_index');
     }
+
 }
