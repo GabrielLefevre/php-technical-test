@@ -26,8 +26,8 @@ class CalculAverage
     }
 
     protected function calculPace(Running $running) {
-        $minuts = $running->getDuration()->format('H')*60 + $running->getDuration()->format('i');
-        $running->setPace(round($running->getDistance() * $minuts,2));
+        $minutes = $running->getDuration()->format('H')*60 + $running->getDuration()->format('i');
+        $running->setPace(round($running->getDistance() * $minutes,2));
     }
 
 }

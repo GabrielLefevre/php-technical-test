@@ -7,6 +7,7 @@ use App\Form\RunningType;
 use App\Repository\RunningRepository;
 use App\Service\CalculAverage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -58,6 +59,11 @@ class RunningController extends AbstractController
      */
     public function show(Running $running): Response
     {
+
+        if($this->getUser() != $running->getUser()) {
+            throw new AccessDeniedException('Access Denied.');
+        }
+
         return $this->render('running/show.html.twig', [
             'running' => $running,
         ]);
@@ -68,6 +74,9 @@ class RunningController extends AbstractController
      */
     public function edit(Request $request, Running $running, CalculAverage $calculAverage): Response
     {
+        if($this->getUser() != $running->getUser()) {
+            throw new AccessDeniedException('Access Denied.');
+        }
         $form = $this->createForm(RunningType::class, $running);
         $form->handleRequest($request);
 
@@ -91,6 +100,9 @@ class RunningController extends AbstractController
      */
     public function delete(Request $request, Running $running): Response
     {
+        if($this->getUser() != $running->getUser()) {
+            throw new AccessDeniedException('Access Denied.');
+        }
         if ($this->isCsrfTokenValid('delete'.$running->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($running);
