@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Running index{% endblock %}
+
+{% block body %}
+    <h1>Running index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Start</th>
+                <th>Duration</th>
+                <th>Distance</th>
+                <th>Comment</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for running in runnings %}
+            <tr>
+                <td>{{ running.id }}</td>
+                <td>{{ running.start ? running.start|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ running.duration }}</td>
+                <td>{{ running.distance }}</td>
+                <td>{{ running.comment }}</td>
+                <td>
+                    <a href="{{ path('running_show', {'id': running.id}) }}">show</a>
+                    <a href="{{ path('running_edit', {'id': running.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('running_new') }}">Create new</a>
+{% endblock %}

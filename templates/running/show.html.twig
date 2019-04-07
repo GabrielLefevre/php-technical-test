@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Running{% endblock %}
+
+{% block body %}
+    <h1>Running</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ running.id }}</td>
+            </tr>
+            <tr>
+                <th>Start</th>
+                <td>{{ running.start ? running.start|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>{{ running.duration }}</td>
+            </tr>
+            <tr>
+                <th>Distance</th>
+                <td>{{ running.distance }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ running.comment }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('running_index') }}">back to list</a>
+
+    <a href="{{ path('running_edit', {'id': running.id}) }}">edit</a>
+
+    {{ include('running/_delete_form.html.twig') }}
+{% endblock %}
