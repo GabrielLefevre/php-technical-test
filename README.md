@@ -2,11 +2,17 @@
 
 ## Présentation générale
 
+### Réalisé
+Projet réalisé en ~3h
+Tout les objectifs principaux sont réalisés. Un bonus réalisé (gestion des types de courses dans un espace d'administration sécurisé.)
+
+Des fixtures sont présentes dans le projet pour créer un admin et des types de courses par défaut.
+
 ### Tâche
 
-Le sujet de base est simple : il faut créer un site permettant la gestion de sorties de courses à pied.
+Le sujet de base est simple : il faut créer un site permettant la gestion de sorties de courses à pied. **==> OK**
 
-Une sortie de course à pied est définie comme ceci :
+Une sortie de course à pied est définie comme ceci : **==> OK**
 * Utilisateur
 * Type de sortie (entraînement, course, loisirs, etc.)
 * Date et heure de début
@@ -14,19 +20,19 @@ Une sortie de course à pied est définie comme ceci :
 * Distance
 * Commentaire
 
-Lors de la création ou modification d'une sortie, il faut calculer et enregistrer :
+Lors de la création ou modification d'une sortie, il faut calculer et enregistrer : **==> OK**
 * la vitesse moyenne (en km/h, 11.1km/h par exemple, on pourra donc enregistrer "11.1")
 * l'allure moyenne (en min/km, 5'24" par exemple, on pourra donc enregistrer "324")
 
 
-Le site doit être sécurisé. Une authentification via http basic auth sur un provider in memory est amplement suffisante. 
+Le site doit être sécurisé. Une authentification via http basic auth sur un provider in memory est amplement suffisante. **==> OK** 
 
-Une fois l'utilisateur connecté, différents **écrans** doivent permettre de :
+Une fois l'utilisateur connecté, différents **écrans** doivent permettre de : **==> OK**
 * lister les sorties (affichage des principales informations dont la vitesse moyenne et l'allure moyenne)
 * ajouter / modifier une sortie
 * supprimer une sortie
 
-Une **API** doit être mise à disposition. Cette **API ne doit pas être sécurisée**. Par le biais de cette API, il doit être possible de :
+Une **API** doit être mise à disposition. Cette **API ne doit pas être sécurisée**. Par le biais de cette API, il doit être possible de : **==> OK**
 * lister toutes les sorties
 * lister les sorties d'un utilisateur
 * récupérer le détail d'une sortie
@@ -34,8 +40,8 @@ Une **API** doit être mise à disposition. Cette **API ne doit pas être sécur
 
 ### Les Pré-requis
 
-* PHP >= 7.1
-* Symfony >= 4
+* PHP >= 7.1 **==> 7.2.14**
+* Symfony >= 4 **==> 4.2.5**
 * On attend aussi de vous que le **code** soit **testable et testé**.
 * Il est conseillé de finir les points requis avant de s'attaquer au bonus.
 * Il est aussi conseillé de faire un maximum de commit pour bien détailler les étapes de votre raisonnement au cours du développement.
