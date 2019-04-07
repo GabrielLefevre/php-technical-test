@@ -37,15 +37,6 @@ class User implements UserInterface
      */
     private $password;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Running", mappedBy="user", orphanRemoval=true)
-     */
-    private $runnings;
-
-    public function __construct()
-    {
-        $this->runnings = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -120,34 +111,4 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    /**
-     * @return Collection|Running[]
-     */
-    public function getRunnings(): Collection
-    {
-        return $this->runnings;
-    }
-
-    public function addRunning(Running $running): self
-    {
-        if (!$this->runnings->contains($running)) {
-            $this->runnings[] = $running;
-            $running->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRunning(Running $running): self
-    {
-        if ($this->runnings->contains($running)) {
-            $this->runnings->removeElement($running);
-            // set the owning side to null (unless already changed)
-            if ($running->getUser() === $this) {
-                $running->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 }

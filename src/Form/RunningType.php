@@ -18,11 +18,11 @@ class RunningType extends AbstractType
             ->add('start')
             ->add('duration', TimeType::class, [
                 'label' => 'Duration (hours, minutes)',
-                'constraints' => [
+               /* 'constraints' => [
                     new GreaterThan([
                         'value' => '00:00',
                         'message' => 'This value should be greater than 00:00'])
-                ]
+                ]*/
             ])
             ->add('distance', NumberType::class, [
                 'label' => 'Distance (km)'
